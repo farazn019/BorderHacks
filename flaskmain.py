@@ -8,6 +8,7 @@ app = Flask(__name__)
 app.secret_key = "SECRET"
 Bootstrap(app)
 
+
 @app.route('/', methods=("GET", "POST"))
 @app.route('/home', methods=("GET", "POST"))
 def homepage():
@@ -23,6 +24,7 @@ def homepage():
         destination = request.form['destination_location']
         destination_city = re.split(', ', destination)[0]
         destination_country = re.split(', ', destination)[1]
+        country_code(destination_country)
 
         departure_date = request.form['leave']
         return_date = request.form['returning']
